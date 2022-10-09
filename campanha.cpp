@@ -93,7 +93,7 @@ bool SAT::SAT_2(){
     }
 
     for(int i = 1; i <= tam; i++){
-        if(component[i] == component[i + tam]) return false;
+        if(this->component[i] == this->component[i + tam]) return false;
     }
     return true;
 }
