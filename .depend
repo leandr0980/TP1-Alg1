@@ -1,2 +1,0 @@
-main.o: main.cpp campanha.hpp
-campanha.o: campanha.cpp campanha.hpp
