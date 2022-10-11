@@ -27,7 +27,7 @@ class SAT{
 
         std::vector<int> component;
 
-        int tam;
+        int size;
         int num_components;
 };
 

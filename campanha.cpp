@@ -7,7 +7,7 @@ SAT::SAT(int n){
 
     this->visited.assign(2*n + 1, false);
 
-    this->tam = n;
+    this->size= n;
     this->num_components = 0;
 }
 
@@ -17,10 +17,10 @@ void SAT::add(int u, bool nu, int v, bool nv){
 
     int pos_u, neg_u, pos_v, neg_v;
 
-    pos_u = (nu ? u + this->tam : u);
-    pos_v = (nv ? v + this->tam : v);
-    neg_u = (nu ? u : u + this->tam);
-    neg_v = (nv ? v : v + this->tam);
+    pos_u = (nu ? u + this->size: u);
+    pos_v = (nv ? v + this->size: v);
+    neg_u = (nu ? u : u + this->size);
+    neg_v = (nv ? v : v + this->size);
 
     // If a person only makes one choice, then it most be guaranteed that this choice is satisfied.
     // Hence the relation ¬u -> u.
@@ -62,7 +62,7 @@ void SAT::dfs(int v)
 }
 
 void SAT::dfs_t(int v)
-// Runs DFS on the transposed graph and assigns a strolngly connected component to each node
+// Runs DFS on the transposed graph and assigns a strongly connected component to each node
 {
     
     this->visited[v] = true;
@@ -78,13 +78,13 @@ void SAT::dfs_t(int v)
 bool SAT::SAT_2()
 // Runs the 2-SAT algorithm and decides whether is possible to satisfy all conditions or not
 {
-    for(int i = 1; i < 2*tam + 1; i++){
+    for(int i = 1; i < 2*size+ 1; i++){
         if(!this->visited[i]){
             this->dfs(i);
         }
     }
 
-    this->visited.assign(2*tam + 1, false);
+    this->visited.assign(2*size+ 1, false);
 
     while(!this->finished.empty()){
         
@@ -97,8 +97,8 @@ bool SAT::SAT_2()
         }
     }
 
-    for(int i = 1; i <= tam; i++){
-        if(this->component[i] == this->component[i + tam])
+    for(int i = 1; i <= size; i++){
+        if(this->component[i] == this->component[i + size])
             return false;
     }
     return true;
