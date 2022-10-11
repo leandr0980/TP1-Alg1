@@ -62,7 +62,7 @@ void SAT::dfs(int v)
 }
 
 void SAT::dfs_t(int v)
-// Runs DFS on the transposed graph and assigns a component to each node
+// Runs DFS on the transposed graph and assigns a strolngly connected component to each node
 {
     
     this->visited[v] = true;
